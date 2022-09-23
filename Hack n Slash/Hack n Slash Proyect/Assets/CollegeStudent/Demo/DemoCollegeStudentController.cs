@@ -42,7 +42,7 @@ namespace ClearSky
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
-            anim.SetBool("isJump", false);
+            anim.SetBool("Jump", false);
         }
         void KickBoard()
         {
@@ -73,7 +73,7 @@ namespace ClearSky
                     moveVelocity = Vector3.left;
 
                     transform.localScale = new Vector3(direction, 1, 1);
-                    if (!anim.GetBool("isJump"))
+                    if (!anim.GetBool("Jump"))
                         anim.SetBool("isRun", true);
 
                 }
@@ -83,7 +83,7 @@ namespace ClearSky
                     moveVelocity = Vector3.right;
 
                     transform.localScale = new Vector3(direction, 1, 1);
-                    if (!anim.GetBool("isJump"))
+                    if (!anim.GetBool("Jump"))
                         anim.SetBool("isRun", true);
 
                 }
@@ -113,10 +113,10 @@ namespace ClearSky
         void Jump()
         {
             if ((Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") > 0)
-            && !anim.GetBool("isJump"))
+            && !anim.GetBool("Jump"))
             {
                 isJumping = true;
-                anim.SetBool("isJump", true);
+                anim.SetBool("Jump", true);
             }
             if (!isJumping)
             {

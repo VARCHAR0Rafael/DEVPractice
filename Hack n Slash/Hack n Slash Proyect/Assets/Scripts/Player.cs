@@ -22,34 +22,24 @@ public class Player : Character, IDamageble
     public LayerMask enemyLayer = 8;
 
     //Variables for Physics
-    private Rigidbody2D rb2d = null;
     private float moveIntentionX = 0;
     private bool attemptJump = false;
     private bool attempMeleeAttack = false;
     private bool attempRangeAttack = false;
     private float timeUntilMeleeAttackReady = 0;
     private float timeUntilRangeAttackReady = 0;
+    private bool isMeleeAttacking = false;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Making sure our rigid body exist to allow our character to move.
-        if (GetComponent<Rigidbody2D>())
-        {
-            rb2d = GetComponent<Rigidbody2D>();
-        }
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        //Getting inputs from the function
+        //Calling the function
         GetInput();
         HandleJump();
         HandleMeleeAttack();
         HandleRangeAttacks();
+        HandleAnimations();
         
     }
 
@@ -80,7 +70,7 @@ public class Player : Character, IDamageble
         //Making jump
         if (attemptJump && Grounded())
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            Rb2D.velocity = new Vector2(Rb2D.velocity.x, jumpForce);
         }
     }
 
@@ -141,10 +131,41 @@ public class Player : Character, IDamageble
         }
 
         //Calculate velocity of rigid body.
-        rb2d.velocity = new Vector2(moveIntentionX * speed, rb2d.velocity.y);
+        Rb2D.velocity = new Vector2(moveIntentionX * speed, Rb2D.velocity.y);
 
     }
-     //Funtion for die,
+
+    //Making the animations.
+    private void HandleAnimations()
+    {
+        Animator.SetBool("Grounded", Grounded());
+
+        //Animation for melee attack
+        if (attempMeleeAttack)
+        {
+            if (!isMeleeAttacking)
+            {
+                Animator.SetTrigger("Attack");
+            }
+
+        }
+
+        if (!attemptJump)
+        {
+            Animator.SetBool("Jump", false);
+        }
+        //Animation for jumping.
+        if (attemptJump && Grounded() || Rb2D.velocity.y > 1f)
+        {
+            if (!isMeleeAttacking)
+            {
+                Animator.SetTrigger("Jump");
+            }
+        }
+
+        
+    }
+     //Funtion for die.
     public virtual void ApplyDamage(float amount)
     {
         CurrentHealth -= amount;

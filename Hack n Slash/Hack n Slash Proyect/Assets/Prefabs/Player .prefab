@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1778135516105264526}
+  - component: {fileID: 4074481034124696666}
   - component: {fileID: 1778135516105264521}
   - component: {fileID: 1778135516105264520}
   - component: {fileID: 1778135516105264523}
@@ -36,6 +37,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4074481034124696666
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778135516105264522}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b95265f99b6d90e438df1308a89c8bab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1778135516105264521
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -136,19 +156,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcd0a4f04dd1e348927996e9281c277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 10
+  speed: 5
+  jumpForce: 6
+  groundedLeeway: 0.1
   meleeAttackmove: 323
   rangeAttackmove: 324
   jumping: 32
   xmovementaxis: Horizontal
-  speed: 5
-  jumpForce: 6
-  groundedLeeway: 0.1
   meleeAttackOrigin: {fileID: 705155522780406282}
   rangeAttackOrigin: {fileID: 4504280220469834169}
   projectile: {fileID: 4589702857233430258, guid: 1dfa3725a65abd34aa4b53309a2d4821, type: 3}
   meleeAttackRadius: 0.6
   meleeDamage: 5
-  rangeDamage: 2
   meleeAttackDelay: 1.1
   rangeAttackDelay: 0.5
   enemyLayer:

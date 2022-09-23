@@ -9,14 +9,16 @@ public class Character : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 6f;
     public float groundedLeeway = 0.1f;
-    private Rigidbody2D rb2d = null;
+
+    private Rigidbody2D rb2D = null;
+    private Animator animator = null;
     private float currentHealth = 5f;
 
-    //Funtion for reference on the other classes.
+    //Funtion for reference on the other classes using get and set for each object, whre using POO.
     public Rigidbody2D Rb2D
     {
-        get { return rb2d; }
-        protected set { rb2d = value; }
+        get { return rb2D; }
+        protected set { rb2D = value; }
 
     }
 
@@ -27,9 +29,28 @@ public class Character : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public Animator Animator
     {
+        get { return animator; }
+        protected set { animator = value; }
+    }
+
+
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        //Component moved from player script for the rigid body
+        if (GetComponent<Rigidbody2D>())
+        {
+            rb2D = GetComponent<Rigidbody2D>();
+        }
+        //same process buth, this time for tha animator
+        if (GetComponent<Animator>())
+        {
+            animator = GetComponent<Animator>();
+        }
+
         currentHealth = healthPoints;
     }
 
