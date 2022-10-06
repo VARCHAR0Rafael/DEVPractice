@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [Header("Attributes")]
     //Variables
     public float healthPoints = 10f;
+
+    [Header("Movement")]
     public float speed = 5f;
     public float jumpForce = 6f;
     public float groundedLeeway = 0.1f;

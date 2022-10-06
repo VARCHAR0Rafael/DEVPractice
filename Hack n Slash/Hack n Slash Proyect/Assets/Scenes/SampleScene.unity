@@ -629,6 +629,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1374061223906670907, guid: b79d59c92f1430546935850a87661622, type: 3}
+      propertyPath: meleeAttackDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1778135516105264520, guid: b79d59c92f1430546935850a87661622, type: 3}
       propertyPath: m_Material
       value: 
@@ -690,6 +694,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2296555385954267257, guid: 6cfa975e32922514097491d4c37f8762, type: 3}
+      propertyPath: meleeAttackDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2296555385954267257, guid: 6cfa975e32922514097491d4c37f8762, type: 3}
+      propertyPath: rangeAttackDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8154798162227933712, guid: 6cfa975e32922514097491d4c37f8762, type: 3}
       propertyPath: m_RootOrder
       value: 3

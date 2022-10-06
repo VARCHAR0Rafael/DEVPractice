@@ -17,7 +17,7 @@ public class Player : Character, IDamageble
     public GameObject projectile = null;//reference for the projectile.
     public float meleeAttackRadius = 0.6f;//For the radius of the attack.
     public float meleeDamage = 2f;//For the damage done.
-    public float meleeAttackDelay = 1.1f;//For the cool down.
+    public float meleeAttackDelay = 1.0f;//For the cool down.
     public float rangeAttackDelay = 0.5f;//For the cool down.
     public LayerMask enemyLayer = 8;
 
@@ -121,11 +121,11 @@ public class Player : Character, IDamageble
     private void HandleRun()
     {
         //Rotate the character when it moves.
-        if (moveIntentionX > 0 && transform.rotation.y == 0)
+        if (moveIntentionX > 0 && transform.rotation.y == 0 && !isMeleeAttacking)
         {
             transform.rotation = Quaternion.Euler(0, 180f, 0);
         }
-        else if (moveIntentionX < 0 && transform.rotation.y != 0)
+        else if (moveIntentionX < 0 && transform.rotation.y != 0 && !isMeleeAttacking)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -145,7 +145,7 @@ public class Player : Character, IDamageble
         {
             if (!isMeleeAttacking)
             {
-                Animator.SetTrigger("Attack");
+                StartCoroutine(MeleeAttackAnimDelay());
             }
 
         }
@@ -163,6 +163,17 @@ public class Player : Character, IDamageble
             }
         }
 
+        if (Mathf.Abs(moveIntentionX) > 0.1f && Grounded())
+        {
+            Animator.SetInteger("AnimState", 2);
+            Animator.SetTrigger("Run");
+        }
+        else
+        {
+            Animator.SetInteger("AnimState", 0);
+            Animator.SetBool("Run", false);
+        }
+
         
     }
      //Funtion for die.
@@ -175,4 +186,12 @@ public class Player : Character, IDamageble
         }
     }
 
+    //Funtion for not attack spam.
+    private IEnumerator MeleeAttackAnimDelay()
+    {
+        Animator.SetTrigger("Attack");
+        isMeleeAttacking = true;
+        yield return new WaitForSeconds(meleeAttackDelay);
+        isMeleeAttacking = false;
+    }
 }
