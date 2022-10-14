@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
     public float CurrentHealth
     {
         get { return currentHealth; }
-        protected set { currentHealth = value; }
+        set { currentHealth = value; }
 
     }
 
