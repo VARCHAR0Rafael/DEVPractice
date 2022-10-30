@@ -146,7 +146,13 @@ public class Player : Character, IDamageble
             if (!isMeleeAttacking)
             {
                 StartCoroutine(MeleeAttackAnimDelay());
+                if (Grounded() == false)
+                {
+                    Animator.SetTrigger("Jump");
+                }
+
             }
+
 
         }
 

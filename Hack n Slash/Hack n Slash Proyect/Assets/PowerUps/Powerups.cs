@@ -6,6 +6,7 @@ public class Powerups : MonoBehaviour
 {
     private Player player = null;
 
+
     public Player Player
     {
         get { return player; }
@@ -28,5 +29,6 @@ public class Powerups : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }
 
