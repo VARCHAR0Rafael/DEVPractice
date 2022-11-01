@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp_Jump : MonoBehaviour
+public class PowerUp_Jump : Powerups
 {
     [Header("Settings")]
 
@@ -21,13 +21,24 @@ public class PowerUp_Jump : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PickUp();
+            StartCoroutine(PickUp(collision));
         }
     }
 
-    void PickUp()
+    IEnumerator PickUp(Collider2D player)
     {
-        Instantiate(pickUpEffect, transform.position, transform.rotation);
+
+        //Instantiate(pickUpEffect, transform.position, transform.rotation);
+        Player playerstats = player.GetComponent<Player>();
+        playerstats.jumpForce += amount;
+
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        playerstats.jumpForce -= amount;
+
         Destroy(gameObject);
     }
 
