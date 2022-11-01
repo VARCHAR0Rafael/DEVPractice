@@ -12,7 +12,7 @@ public class Player : Character, IDamageble
     public KeyCode jumping = KeyCode.Space;
     public string xmovementaxis = "Horizontal";
 
-    //Variables for combat
+    //Variables for combat.
     public Transform meleeAttackOrigin = null;
     public Transform rangeAttackOrigin = null;
     public GameObject projectile = null;//reference for the projectile.
@@ -22,7 +22,7 @@ public class Player : Character, IDamageble
     public float rangeAttackDelay = 0.5f;//For the cool down.
     public LayerMask enemyLayer = 8;
 
-    //Variables for Physics
+    //Variables for Physics.
     private float moveIntentionX = 0;
     private bool attemptJump = false;
     private bool attempMeleeAttack = false;
@@ -30,6 +30,7 @@ public class Player : Character, IDamageble
     private float timeUntilMeleeAttackReady = 0;
     private float timeUntilRangeAttackReady = 0;
     private bool isMeleeAttacking = false;
+
 
 
     // Update is called once per frame
@@ -51,6 +52,11 @@ public class Player : Character, IDamageble
         if (isAlive == true)
         {
             HandleRun();
+        }
+
+        if (isAlive && Rb2D.position.y < -6f)
+        {
+            FindObjectOfType<GameManger>().EndGame();
         }
     }
 
@@ -175,12 +181,12 @@ public class Player : Character, IDamageble
 
         if (Mathf.Abs(moveIntentionX) > 0.1f && Grounded() && isAlive == true)
         {
-            Animator.SetInteger("AnimState", 2);
+            //Animator.SetInteger("AnimState", 2);
             Animator.SetTrigger("Run");
         }
         else
         {
-            Animator.SetInteger("AnimState", 0);
+            //Animator.SetInteger("AnimState", 0);
             Animator.SetBool("Run", false);
         }
 
@@ -192,6 +198,7 @@ public class Player : Character, IDamageble
         if (CurrentHealth <= 0)
         {
             isAlive = false;
+            FindObjectOfType<GameManger>().EndGame();
             Die();
         }
     }
@@ -210,9 +217,11 @@ public class Player : Character, IDamageble
         if (collision.gameObject.tag == "Spikes")
         {
             currentHealth -= 5;
+            Animator.SetTrigger("hurt");
             if (CurrentHealth <= 0)
             {
                 isAlive = false;
+                FindObjectOfType<GameManger>().EndGame();
                 Die();
             }
         }
