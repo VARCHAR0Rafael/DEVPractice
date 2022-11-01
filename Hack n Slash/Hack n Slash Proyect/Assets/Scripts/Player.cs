@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : Character, IDamageble
 {
     //Variables for Inputs for movement, attacking, etc.
+    //public bool isAlive = true;
     public KeyCode meleeAttackmove = KeyCode.Mouse0;
     public KeyCode rangeAttackmove = KeyCode.Mouse1;
     public KeyCode jumping = KeyCode.Space;
@@ -40,18 +41,22 @@ public class Player : Character, IDamageble
         HandleMeleeAttack();
         HandleRangeAttacks();
         HandleAnimations();
-        
+
+
     }
 
     private void FixedUpdate()
     {
         //Making the player to move
-        HandleRun();
+        if (isAlive == true)
+        {
+            HandleRun();
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (meleeAttackOrigin != null)
+        if (meleeAttackOrigin != null && isAlive == true)
         {
             Gizmos.DrawWireSphere(meleeAttackOrigin.position, meleeAttackRadius);
         }
@@ -68,7 +73,7 @@ public class Player : Character, IDamageble
     private void HandleJump()
     {
         //Making jump
-        if (attemptJump && Grounded())
+        if (attemptJump && Grounded() && isAlive == true)
         {
             Rb2D.velocity = new Vector2(Rb2D.velocity.x, jumpForce);
         }
@@ -78,7 +83,7 @@ public class Player : Character, IDamageble
     private void HandleMeleeAttack()
     {
         //Making melee attack, so first we ask if we can attack by the cool down.
-        if (attempMeleeAttack && timeUntilMeleeAttackReady <= 0)
+        if (attempMeleeAttack && timeUntilMeleeAttackReady <= 0 && isAlive == true)
         {
             Debug.Log("Attack");
             //Making logic for attacking
@@ -86,7 +91,7 @@ public class Player : Character, IDamageble
             for (int i = 0; i < overLappedColliders.Length; i++)
             {
                 IDamageble enemyAtributes = overLappedColliders[i].GetComponent<IDamageble>();
-                if (enemyAtributes != null)
+                if (enemyAtributes != null && isAlive == true)
                 {
                     enemyAtributes.ApplyDamage(meleeDamage);
                 }
@@ -104,7 +109,7 @@ public class Player : Character, IDamageble
     private void HandleRangeAttacks()
     {
         //Making range attack, so first we ask if we can attack by the cool down.
-        if (attempRangeAttack && timeUntilRangeAttackReady <= 0)
+        if (attempRangeAttack && timeUntilRangeAttackReady <= 0 && isAlive == true)
         {
             Debug.Log("Range Attack");
             Instantiate(projectile, rangeAttackOrigin.position, rangeAttackOrigin.rotation);
@@ -121,11 +126,11 @@ public class Player : Character, IDamageble
     private void HandleRun()
     {
         //Rotate the character when it moves.
-        if (moveIntentionX > 0 && transform.rotation.y == 0 && !isMeleeAttacking)
+        if (moveIntentionX > 0 && transform.rotation.y == 0 && !isMeleeAttacking && isAlive == true)
         {
             transform.rotation = Quaternion.Euler(0, 180f, 0);
         }
-        else if (moveIntentionX < 0 && transform.rotation.y != 0 && !isMeleeAttacking)
+        else if (moveIntentionX < 0 && transform.rotation.y != 0 && !isMeleeAttacking && isAlive == true)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -141,35 +146,34 @@ public class Player : Character, IDamageble
         Animator.SetBool("Grounded", Grounded());
 
         //Animation for melee attack
-        if (attempMeleeAttack)
+        if (attempMeleeAttack && isAlive == true)
         {
-            if (!isMeleeAttacking)
+            if (!isMeleeAttacking && isAlive == true)
             {
                 StartCoroutine(MeleeAttackAnimDelay());
-                if (Grounded() == false)
+                if (Grounded() == false && isAlive == true)
                 {
                     Animator.SetTrigger("Jump");
                 }
 
             }
 
-
         }
 
-        if (!attemptJump)
+        if (!attemptJump && isAlive == true)
         {
             Animator.SetBool("Jump", false);
         }
         //Animation for jumping.
-        if (attemptJump && Grounded() || Rb2D.velocity.y > 1f)
+        if (attemptJump && Grounded() || Rb2D.velocity.y > 1f && isAlive == true)
         {
-            if (!isMeleeAttacking)
+            if (!isMeleeAttacking && isAlive == true)
             {
                 Animator.SetTrigger("Jump");
             }
         }
 
-        if (Mathf.Abs(moveIntentionX) > 0.1f && Grounded())
+        if (Mathf.Abs(moveIntentionX) > 0.1f && Grounded() && isAlive == true)
         {
             Animator.SetInteger("AnimState", 2);
             Animator.SetTrigger("Run");
@@ -180,7 +184,6 @@ public class Player : Character, IDamageble
             Animator.SetBool("Run", false);
         }
 
-        
     }
      //Funtion for die.
     public virtual void ApplyDamage(float amount)
@@ -188,6 +191,7 @@ public class Player : Character, IDamageble
         CurrentHealth -= amount;
         if (CurrentHealth <= 0)
         {
+            isAlive = false;
             Die();
         }
     }
@@ -200,4 +204,18 @@ public class Player : Character, IDamageble
         yield return new WaitForSeconds(meleeAttackDelay);
         isMeleeAttacking = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Spikes")
+        {
+            currentHealth -= 5;
+            if (CurrentHealth <= 0)
+            {
+                isAlive = false;
+                Die();
+            }
+        }
+    }
+
 }

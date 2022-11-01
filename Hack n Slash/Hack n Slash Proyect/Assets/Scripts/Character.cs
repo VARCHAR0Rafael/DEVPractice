@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
     [Header("Attributes")]
     //Variables
     public float healthPoints = 10f;
+    public bool isAlive = true;
 
     [Header("Movement")]
     public float speed = 5f;
@@ -15,7 +16,7 @@ public class Character : MonoBehaviour
 
     private Rigidbody2D rb2D = null;
     private Animator animator = null;
-    private float currentHealth = 5f;
+    public float currentHealth = 10f;
 
     //Funtion for reference on the other classes using get and set for each object, whre using POO.
     public Rigidbody2D Rb2D
@@ -72,6 +73,7 @@ public class Character : MonoBehaviour
     //Funtion to set the enemy to died.
     protected virtual void Die()
     {
+        isAlive = false;
         gameObject.SetActive(false);
         Destroy(gameObject);
     }

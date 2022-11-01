@@ -7,5 +7,4 @@ using UnityEngine;
 public interface IDamageble 
 {
     void ApplyDamage(float amount);
- 
 }
