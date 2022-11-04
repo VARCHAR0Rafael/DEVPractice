@@ -136,9 +136,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 10
+  isAlive: 1
   speed: 5
   jumpForce: 6
   groundedLeeway: 0.1
+  currentHealth: 10
+  anim: {fileID: 1182438471841151}
 --- !u!95 &1182438471841151
 Animator:
   serializedVersion: 3

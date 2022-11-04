@@ -77,4 +77,5 @@ public class Character : MonoBehaviour
         gameObject.SetActive(false);
         Destroy(gameObject);
     }
+
 }
