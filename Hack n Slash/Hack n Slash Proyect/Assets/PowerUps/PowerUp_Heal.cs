@@ -10,8 +10,15 @@ public class PowerUp_Heal : Powerups
 
     public override void Activate()
     {
-        Player.CurrentHealth += amount;
-        Debug.Log("Player: " + Player.CurrentHealth);
-        base.Activate();
+        if (Player.currentHealth < Player.healthPoints)
+        {
+            Player.CurrentHealth += amount;
+            if (Player.currentHealth > Player.healthPoints)
+            {
+                Player.currentHealth = Player.healthPoints;
+            }
+            Debug.Log("Player: " + Player.CurrentHealth);
+            base.Activate();
+        }
     }
 }

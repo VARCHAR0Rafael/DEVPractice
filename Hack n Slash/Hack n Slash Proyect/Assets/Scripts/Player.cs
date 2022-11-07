@@ -11,6 +11,7 @@ public class Player : Character, IDamageble
     public KeyCode rangeAttackmove = KeyCode.Mouse1;
     public KeyCode jumping = KeyCode.Space;
     public string xmovementaxis = "Horizontal";
+    public Health_barScript health_BarScript;
 
     //Variables for combat.
     public Transform meleeAttackOrigin = null;
@@ -42,7 +43,7 @@ public class Player : Character, IDamageble
         HandleMeleeAttack();
         HandleRangeAttacks();
         HandleAnimations();
-
+        health_BarScript.SetHealth(currentHealth);
 
     }
 
@@ -226,5 +227,7 @@ public class Player : Character, IDamageble
             }
         }
     }
+    
+
 
 }
