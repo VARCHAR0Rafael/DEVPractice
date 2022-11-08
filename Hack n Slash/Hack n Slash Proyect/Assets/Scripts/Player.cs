@@ -18,7 +18,7 @@ public class Player : Character, IDamageble
     public Transform rangeAttackOrigin = null;
     public GameObject projectile = null;//reference for the projectile.
     public float meleeAttackRadius = 0.6f;//For the radius of the attack.
-    public float meleeDamage = 2f;//For the damage done.
+    public float meleeDamage = 20f;//For the damage done.
     public float meleeAttackDelay = 1.0f;//For the cool down.
     public float rangeAttackDelay = 0.5f;//For the cool down.
     public LayerMask enemyLayer = 8;

@@ -136,5 +136,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 5953268965373639149}
   projectileSpeed: 15
-  projectileDamage: 1
+  projectileDamage: 5
   delaySeconds: 3

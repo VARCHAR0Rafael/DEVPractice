@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     [Header("Attributes")]
     //Variables
-    public float healthPoints = 10f;
+    public float healthPoints = 100f;
     public bool isAlive = true;
 
     [Header("Movement")]
@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
 
     private Rigidbody2D rb2D = null;
     private Animator animator = null;
-    public float currentHealth = 10f;
+    public float currentHealth = 100f;
 
     //Funtion for reference on the other classes using get and set for each object, whre using POO.
     public Rigidbody2D Rb2D

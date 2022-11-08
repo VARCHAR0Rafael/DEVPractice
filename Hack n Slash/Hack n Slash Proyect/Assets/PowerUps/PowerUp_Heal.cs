@@ -6,7 +6,7 @@ public class PowerUp_Heal : Powerups
 {
     [Header("Settings")]
 
-    public float amount = 5f;
+    public float amount = 25f;
 
     public override void Activate()
     {

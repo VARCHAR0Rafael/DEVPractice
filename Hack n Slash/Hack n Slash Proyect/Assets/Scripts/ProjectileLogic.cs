@@ -7,7 +7,7 @@ public class ProjectileLogic : MonoBehaviour
     //Variables.
     public Rigidbody2D rb2d = null;
     public float projectileSpeed = 15f;
-    public float projectileDamage = 1f;
+    public float projectileDamage = 5f;
     public float delaySeconds = 3f;
     private WaitForSeconds cullDelay = null;
     // Start is called before the first frame update

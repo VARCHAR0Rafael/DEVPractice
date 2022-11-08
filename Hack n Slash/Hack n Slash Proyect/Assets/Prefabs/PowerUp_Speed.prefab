@@ -122,6 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175fa4f5cbb79584684e150778a3c65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 6
-  duration: 5
+  amount: 8
+  duration: 10
   pickUpEffect: {fileID: 0}

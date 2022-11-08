@@ -6,8 +6,8 @@ public class PowerUp_PowerBoost : Powerups
 {
     [Header("Settings")]
 
-    public float amount = 10f;
-    public float duration = 5f;
+    public float amount = 20f;
+    public float duration = 15f;
     public GameObject pickUpEffect;
 
     void OnTriggerEnter2D(Collider2D collision)

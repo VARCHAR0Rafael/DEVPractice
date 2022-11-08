@@ -123,5 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 10
-  duration: 8
+  duration: 10
   pickUpEffect: {fileID: 0}

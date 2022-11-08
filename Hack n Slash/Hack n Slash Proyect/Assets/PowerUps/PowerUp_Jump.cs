@@ -7,7 +7,7 @@ public class PowerUp_Jump : Powerups
     [Header("Settings")]
 
     public float amount = 10f;
-    public float duration = 2f;
+    public float duration = 10f;
     public GameObject pickUpEffect;
 
     /* public override void Activate()
