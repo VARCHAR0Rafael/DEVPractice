@@ -13,7 +13,7 @@ public class Boss_Enemy : Character, IDamageble
     public LayerMask playerLayer = 9;
 
     //Variables for cooldowns.
-    private float timeUntilMeleeAttackReady = 0;
+    //private float timeUntilMeleeAttackReady = 0;
     public float meleeAttackDelay = 1.0f;//For the cool down.
 
     //example
@@ -23,12 +23,12 @@ public class Boss_Enemy : Character, IDamageble
     public Vector3 attackOffset;
     public float attackRange = 4f;
     public LayerMask attackMask;
+    public bool isInvulnerable = false;
 
     void Update()
     {
         //Calling the function
         //HandleMeleeAttack();
-
 
     }
     public Animator anim;
@@ -78,8 +78,17 @@ public class Boss_Enemy : Character, IDamageble
 
     public virtual void ApplyDamage(float amount)
     {
+        if (isInvulnerable)
+        {
+            return;
+        }
+
         CurrentHealth -= amount;
         anim.SetTrigger("Hurt");
+        if (currentHealth < 50)
+        {
+            GetComponent<Animator>().SetBool("isInRaged", true); 
+        }
         if (CurrentHealth <= 0)
         {
             Die();
@@ -92,7 +101,6 @@ public class Boss_Enemy : Character, IDamageble
         //Vector3 pos = transform.position;
         //pos += transform.right * attackOffset.x;
         //pos += transform.up * attackOffset.y;
-
         Collider2D colInfo = Physics2D.OverlapCircle(meleeAttackOriginEnemy.position, attackRange, playerLayer);
         if (colInfo != null)
         {
@@ -105,7 +113,6 @@ public class Boss_Enemy : Character, IDamageble
         //Vector3 pos = transform.position;
         //pos += transform.right * attackOffset.x;
         //pos += transform.up * attackOffset.y;
-
         Collider2D colInfo = Physics2D.OverlapCircle(meleeAttackOriginEnemy.position, attackRange, playerLayer);
         if (colInfo != null)
         {
@@ -123,5 +130,6 @@ public class Boss_Enemy : Character, IDamageble
         Gizmos.DrawWireSphere(meleeAttackOriginEnemy.position, attackRange);
     }
 
+ 
 
 }

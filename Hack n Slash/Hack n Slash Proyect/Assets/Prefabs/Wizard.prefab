@@ -156,6 +156,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 0
+  isInvulnerable: 0
   anim: {fileID: 2305636544823877782}
 --- !u!114 &4105362945659953996
 MonoBehaviour:

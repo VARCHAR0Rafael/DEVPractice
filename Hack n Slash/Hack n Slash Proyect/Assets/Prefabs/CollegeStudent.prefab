@@ -2346,7 +2346,7 @@ MonoBehaviour:
   projectile: {fileID: 4589702857233430258, guid: 1dfa3725a65abd34aa4b53309a2d4821, type: 3}
   meleeAttackRadius: 0.6
   meleeDamage: 20
-  meleeAttackDelay: 0.35
+  meleeAttackDelay: 0.5
   rangeAttackDelay: 0.2
   enemyLayer:
     serializedVersion: 2
