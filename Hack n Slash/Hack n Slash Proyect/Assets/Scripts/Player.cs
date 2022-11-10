@@ -193,6 +193,7 @@ public class Player : Character, IDamageble
      //Funtion for die.
     public virtual void ApplyDamage(float amount)
     {
+        Animator.SetTrigger("Hurt");
         CurrentHealth -= amount;
         if (CurrentHealth <= 0)
         {
@@ -216,7 +217,7 @@ public class Player : Character, IDamageble
         if (collision.gameObject.tag == "Spikes")
         {
             currentHealth -= 5;
-            Animator.SetTrigger("hurt");
+            Animator.SetTrigger("Hurt");
             if (CurrentHealth <= 0)
             {
                 isAlive = false;

@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.24800491, y: -0.080105245}
+  m_AnchoredPosition: {x: 0.000000014901161, y: 0.000000052154064}
   m_SizeDelta: {x: 21.643007, y: 2.282013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &12387827
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 0
-    m_WrapAround: 0
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1739562756}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
@@ -137,7 +137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.10699463, y: -0.026992798}
+  m_AnchoredPosition: {x: 0.10699463, y: -0.026992798}
   m_SizeDelta: {x: 1.409, y: 1.476}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &228463431
@@ -215,7 +215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0642, y: 4.456}
+  m_AnchoredPosition: {x: 0.0642, y: 4.456}
   m_SizeDelta: {x: 22.9696, y: 3.766}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &973245828
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5aa232448cd69e4c9e2c6030411d986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &1739562755
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +931,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4539121118015157565}
   m_Bounds:
-    m_Center: {x: -0.00033305585, y: -0.00010025501, z: 0}
+    m_Center: {x: -0.00033305585, y: -0.0001001358, z: 0}
     m_Extent: {x: 0.20288749, y: 0.35843495, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1252,8 +1253,8 @@ MonoBehaviour:
   - {fileID: 8739539253225603580}
   - {fileID: 8942113218925521667}
   m_Bounds:
-    m_Center: {x: -0.013242483, y: 0.00031238794, z: 0}
-    m_Extent: {x: 0.52732265, y: 0.96097755, z: 0}
+    m_Center: {x: -0.013242483, y: 0.00031244755, z: 0}
+    m_Extent: {x: 0.52732265, y: 0.96097744, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4204169793228261326
@@ -1446,7 +1447,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2501878532663892736}
   m_Bounds:
-    m_Center: {x: -0.0029325187, y: -0.0024677217, z: 0}
+    m_Center: {x: -0.0029327571, y: -0.0024677217, z: 0}
     m_Extent: {x: 0.20073253, y: 0.36059743, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1579,8 +1580,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4499607401199846825}
   m_Bounds:
-    m_Center: {x: 0.000000461936, y: 0.0018197894, z: 0}
-    m_Extent: {x: 0.22750017, y: 0.5793202, z: 0}
+    m_Center: {x: -0.000000014901161, y: 0.0018197894, z: 0}
+    m_Extent: {x: 0.22750017, y: 0.57932013, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4525503234796828069
@@ -2188,7 +2189,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 140794783394052230}
   m_Bounds:
-    m_Center: {x: 0.000000014901161, y: -0.0030296445, z: 0}
+    m_Center: {x: 0.00000025331974, y: -0.0030296445, z: 0}
     m_Extent: {x: 0.18750007, y: 0.47697002, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -2235,7 +2236,7 @@ GameObject:
   - component: {fileID: 6759562932740946231}
   - component: {fileID: 7198519041146693503}
   - component: {fileID: 2296555385954267257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CollegeStudent
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2545,7 +2546,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3287588832913275315}
   m_Bounds:
-    m_Center: {x: -0.00026747584, y: 0, z: 0}
+    m_Center: {x: -0.00026747584, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.19367754, y: 0.38750005, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
