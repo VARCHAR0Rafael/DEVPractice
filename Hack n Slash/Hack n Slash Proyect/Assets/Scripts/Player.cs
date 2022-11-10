@@ -32,8 +32,6 @@ public class Player : Character, IDamageble
     private float timeUntilRangeAttackReady = 0;
     private bool isMeleeAttacking = false;
 
-
-
     // Update is called once per frame
     void Update()
     {
@@ -226,8 +224,15 @@ public class Player : Character, IDamageble
                 Die();
             }
         }
+
     }
-    
+
+    /*void TakeDamage(float amaunt)
+    {
+        currentHealth -= amaunt;
+    }*/
+
+
 
 
 }
