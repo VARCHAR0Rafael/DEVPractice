@@ -85,7 +85,7 @@ public class Boss_Enemy : Character, IDamageble
 
         CurrentHealth -= amount;
         anim.SetTrigger("Hurt");
-        if (currentHealth < 50)
+        if (currentHealth < 70)
         {
             GetComponent<Animator>().SetBool("isInRaged", true); 
         }
