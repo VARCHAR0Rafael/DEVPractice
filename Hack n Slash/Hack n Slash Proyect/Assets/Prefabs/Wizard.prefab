@@ -143,8 +143,8 @@ MonoBehaviour:
   currentHealth: 100
   meleeAttackOriginEnemy: {fileID: 728151357}
   meleeAttackRadius: 0.6
-  meleeDamage: 20
-  meleeRageDamage: 40
+  meleeDamage: 10
+  meleeRageDamage: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
