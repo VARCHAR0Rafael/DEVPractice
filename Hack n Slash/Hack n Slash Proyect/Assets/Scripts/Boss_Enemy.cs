@@ -11,6 +11,7 @@ public class Boss_Enemy : Character, IDamageble
     public float meleeDamage = 20f;//For the damage done.
     public float meleeRageDamage = 40f;
     public LayerMask playerLayer = 9;
+    public Health_barScript health_BarScript;
 
     //Variables for cooldowns.
     //private float timeUntilMeleeAttackReady = 0;
@@ -29,7 +30,7 @@ public class Boss_Enemy : Character, IDamageble
     {
         //Calling the function
         //HandleMeleeAttack();
-
+        health_BarScript.SetHealth(currentHealth);
     }
     public Animator anim;
 
