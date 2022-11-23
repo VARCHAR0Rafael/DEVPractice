@@ -92,6 +92,8 @@ public class Boss_Enemy : Character, IDamageble
         }
         if (CurrentHealth <= 0)
         {
+            currentHealth = 0;
+            health_BarScript.slider.value = 0;
             Die();
         }
     }
