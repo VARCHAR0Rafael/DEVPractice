@@ -8,6 +8,8 @@ public class DoorUnlock_Script : MonoBehaviour
     {
         if (collision.CompareTag("Projectile"))
         {
+            FindObjectOfType<AudioManager>().Stop("DOOM");
+            FindObjectOfType<AudioManager>().Play("DMC5");
             Destroy(gameObject);
         }
     }
